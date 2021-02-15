@@ -5,6 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <!--    <include file="liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>-->
+        <include file="liquibase/changelog/20211402180300_create_table_conta_pagar_schema.xml" relativeToChangelogFile="false"/>
+        <include file="liquibase/changelog/20211402181600_create_table_regra_schema.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

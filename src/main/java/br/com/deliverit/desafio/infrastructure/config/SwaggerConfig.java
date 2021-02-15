@@ -10,11 +10,18 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * Classe responśavel pela configuração do Swagger
+ */
 @Configuration
 public class SwaggerConfig {
 
-    private final static String PACKAGEREST = "br.com.codeflix.videos.application.web";
+    private final static String PACKAGEREST = "br.com.deliverit.desafio.application.web.rest";
 
+    /**
+     * Método de configurações Swagger
+     * @return
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.OAS_30)
@@ -25,6 +32,10 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
+    /**
+     * Método contendo informações a ser inserida no Swagger
+     * @return
+     */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Desafio DeliverIT")
@@ -34,6 +45,10 @@ public class SwaggerConfig {
                 .build();
     }
 
+    /**
+     * Método contendo dados para contato
+     * @return
+     */
     private Contact contact() {
         return new Contact(
                 "Alan Oliveira",
