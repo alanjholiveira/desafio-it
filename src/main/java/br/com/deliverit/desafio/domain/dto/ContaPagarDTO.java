@@ -1,6 +1,7 @@
 package br.com.deliverit.desafio.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class ContaPagarDTO {
 
     private Long id;
@@ -24,7 +26,7 @@ public class ContaPagarDTO {
     private String nome;
 
     @NotNull(message = "Valor original não pode ser nulo")
-    private Double valor;
+    private Double valorOriginal;
 
     @NotNull(message = "Data de Vencimento não pode ser nula")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
@@ -33,5 +35,5 @@ public class ContaPagarDTO {
     @NotNull(message = "Data de Pagamento não pode ser nula")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dtPagamento;
-    
+
 }

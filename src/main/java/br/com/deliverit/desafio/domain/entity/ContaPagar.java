@@ -1,5 +1,6 @@
 package br.com.deliverit.desafio.domain.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class ContaPagar {
 
     @Id

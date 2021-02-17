@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @Api(tags = "Conta a Pagar")
 @Tag(name = "Conta a Pagar", description = "Recursos referente a Conta a Pagar")
-@RequestMapping("/v1/contas")
+@RequestMapping("/api/contas")
 @RequiredArgsConstructor
 public class ContaPagarRest {
 

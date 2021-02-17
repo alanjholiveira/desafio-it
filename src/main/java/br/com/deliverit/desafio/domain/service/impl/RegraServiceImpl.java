@@ -22,7 +22,7 @@ public class RegraServiceImpl implements RegraService {
 
     /**
      * Método para calcular Multas e Juros
-     * @param contaPagar
+     * @param contaPagar - {@link ContaPagar }
      * @return Double
      */
     @Override
@@ -30,8 +30,8 @@ public class RegraServiceImpl implements RegraService {
         int diasAtraso = calcularDiasAtraso(contaPagar);
         List<Regra> regras = repository.findAll();
 
-            Optional<Regra> regra = regras.stream().filter(r -> r.getDiasMin() <= diasAtraso && r.getDiasMax() > diasAtraso)
-                    .findFirst();
+            Optional<Regra> regra = regras.stream().filter(r -> r.getDiasMin() <= diasAtraso &&
+                    r.getDiasMax() >= diasAtraso).findFirst();
 
             if (regra.isPresent()) {
                 double valorMulta = contaPagar.getValorOriginal() * regra.get().getMulta();
@@ -44,12 +44,25 @@ public class RegraServiceImpl implements RegraService {
 
     /**
      * Método para calcular quntidade de dias vencido
-     * @param contaPagar
-     * @return
+     * @param contaPagar - {@link ContaPagar }
+     * @return {@link Integer}
      */
     @Override
     public Integer calcularDiasAtraso(ContaPagar contaPagar) {
         return Math.toIntExact(ChronoUnit.DAYS.between(contaPagar.getDtVencimento(),
                 contaPagar.getDtPagamento()));
+    }
+
+    /**
+     * Método para obter regra
+     * @return {@link Regra}
+     */
+    @Override
+    public Regra obterRegra(ContaPagar contaPagar) {
+        int diasAtraso = calcularDiasAtraso(contaPagar);
+        List<Regra> regras = repository.findAll();
+
+        return regras.stream().filter(r -> r.getDiasMin() <= diasAtraso &&
+                r.getDiasMax() >= diasAtraso).findFirst().orElse(new Regra());
     }
 }

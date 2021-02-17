@@ -1,6 +1,7 @@
 package br.com.deliverit.desafio.domain.service;
 
 import br.com.deliverit.desafio.domain.entity.ContaPagar;
+import br.com.deliverit.desafio.domain.entity.Regra;
 
 /**
  * Interface Regra Service
@@ -21,4 +22,9 @@ public interface RegraService {
      */
     Integer calcularDiasAtraso(ContaPagar contaPagar);
 
+    /**
+     * Método para obter regra
+     * @return
+     */
+    Regra obterRegra(ContaPagar contaPagar);
 }
