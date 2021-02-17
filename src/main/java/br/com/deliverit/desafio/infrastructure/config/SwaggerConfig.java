@@ -16,17 +16,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
 
-    private final static String PACKAGEREST = "br.com.deliverit.desafio.application.web.rest";
+    private static final String PACKAGE_REST = "br.com.deliverit.desafio.application.web.rest";
 
     /**
      * Método de configurações Swagger
-     * @return
+     * @return {@link Docket}
      */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.OAS_30)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(PACKAGEREST))
+                .apis(RequestHandlerSelectors.basePackage(PACKAGE_REST))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
