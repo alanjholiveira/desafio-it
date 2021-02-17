@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
+    <changeSet id="20211402181600_create_table_regra-01" author="Alan Oliveira" dbms="h2">
+
+        <createTable tableName="tb_regra">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="dias_min" type="int" />
+            <column name="dias_max" type="int" />
+            <column name="descricao" type="varchar(255)" />
+            <column name="multa" type="double" />
+            <column name="juros" type="double" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20211402181600_create_table_regra-02" author="Alan Oliveira" dbms="h2">
+        <createIndex indexName="idx_regra" tableName="tb_regra" unique="true">
+            <column name="id"/>
+        </createIndex>
+        <addUniqueConstraint tableName="tb_regra" columnNames="id" />
+        <createSequence sequenceName="tb_regra_id_seq" />
+    </changeSet>
+
+    <changeSet id="20211402181600_create_table_regra-03" author="Alan Oliveira" dbms="h2">
+        <insert schemaName="public" tableName="tb_regra">
+            <column name="id" value="1"/>
+            <column name="dias_min" value="1"/>
+            <column name="dias_max" value="3"/>
+            <column name="descricao" value="Até 3 Dias"/>
+            <column name="multa" value="0.02"/>
+            <column name="juros" value="0.001"/>
+        </insert>
+
+        <insert schemaName="public" tableName="tb_regra">
+            <column name="id" value="2"/>
+            <column name="dias_min" value="4"/>
+            <column name="dias_max" value="5"/>
+            <column name="descricao" value="Superior a 3 Dias"/>
+            <column name="multa" value="0.03"/>
+            <column name="juros" value="0.002"/>
+        </insert>
+
+        <insert schemaName="public" tableName="tb_regra">
+            <column name="id" value="3"/>
+            <column name="dias_min" value="6"/>
+            <column name="dias_max" value="999999999"/>
+            <column name="descricao" value="Superior a 5 Dias"/>
+            <column name="multa" value="0.05"/>
+            <column name="juros" value="0.003"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
