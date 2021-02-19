@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    platform: postgres
+    url: jdbc:postgresql://desafio-db:5432/desafio_it
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  liquibase:
+    contexts: dev
+  mail:
+    host: localhost
+    port: 25
+    username:
+    password:

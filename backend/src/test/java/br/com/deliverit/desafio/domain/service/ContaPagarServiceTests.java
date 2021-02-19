@@ -18,6 +18,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ class ContaPagarServiceTests {
 
     @Test
     void testGetAll() {
-        Mockito.when(repository.findAll()).thenReturn(contaspagar);
+        Mockito.when(repository.findAll(Sort.by(Sort.Direction.DESC, "id"))).thenReturn(contaspagar);
 
         List<ContaPagarListagemDTO> result = service.getAll();
 

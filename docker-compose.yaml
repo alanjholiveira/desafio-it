@@ -1,0 +1,39 @@
+version: '3.5'
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: desafio-backend
+    ports: 
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      - "db"
+
+  frontend:
+    build: ./frontend
+    container_name: desafio-frontend
+    ports: 
+      - "8090:80"
+    networks: 
+      - app-network
+    depends_on:
+      - "backend"
+
+  db:
+    build: ./docker/postgres
+    container_name: desafio-db
+    ports:
+      - "5432:5432"
+    environment:
+        POSTGRES_DB: desafio_it
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
