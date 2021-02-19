@@ -12,6 +12,7 @@ import br.com.deliverit.desafio.infrastructure.exception.NotFoundException;
 import br.com.deliverit.desafio.infrastructure.exception.RegraNegocioException;
 import br.com.deliverit.desafio.infrastructure.repository.ContaPagarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,7 @@ public class ContaPagarServiceImpl implements ContaPagarService {
     @Override
     @Transactional(readOnly = true)
     public List<ContaPagarListagemDTO> getAll(){
-        List<ContaPagar> result = repository.findAll();
+        List<ContaPagar> result = repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         return listagemMapper.toDto(result);
     }
 

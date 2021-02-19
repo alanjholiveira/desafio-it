@@ -18,7 +18,7 @@
     <description>Desafio DeliverIT</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <testcontainers.version>1.15.1</testcontainers.version>
         <springfox.swagger.version>3.0.0</springfox.swagger.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
